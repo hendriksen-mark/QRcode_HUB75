@@ -1,20 +1,12 @@
-#include <Arduino.h>
-/* *********************************************************************************
- * ESP8266 QRcode
- * dependency library :
- *   ESP8266 Oled Driver for SSD1306 display by Daniel Eichborn, Fabrice Weinberg
- *
- * SDA --> D6
- * SCL --> D7
-***********************************************************************************/
-#define OLEDDISPLAY
+#include <qrcode_hub75.h>
+#include <ESP32-HUB75-MatrixPanel-I2S-DMA.h>
 
-#include <qrcodeoled.h>
-#include <SSD1306.h>
+/*--------------------- MATRIX LILBRARY CONFIG -------------------------*/
+#define PANEL_RES_X 64      // Number of pixels wide of each INDIVIDUAL panel module. 
+#define PANEL_RES_Y 32     // Number of pixels tall of each INDIVIDUAL panel module.
+#define PANEL_CHAIN 1      // Total number of panels chained one to another
 
-SSD1306  display(0x3c, 21, 22); // Only change
-
-QRcodeOled qrcode (&display);
+MatrixPanel_I2S_DMA *dma_display = nullptr;
 
 
 void setup() {
@@ -23,9 +15,9 @@ void setup() {
     Serial.println("");
     Serial.println("Starting...");
 
-    display.init();
-    display.clear();
-    display.display();
+    dma_display = new MatrixPanel_I2S_DMA(mxconfig);
+    dma_display->begin();
+    QRcode_HUB75 qrcode (dma_display);
 
 
     // enable debug qrcode

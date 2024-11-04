@@ -1,12 +1,12 @@
 {
-  "name": "QRcodeOled",
-  "version": "2.0.0",
-  "keywords": "qr code, ESP32, ESP8266, SSD1306, SSH1106",
-  "description": "QR code generation on OLED displays",
+  "name": "QRcode_HUB75",
+  "version": "2.1.0",
+  "keywords": "qr code, ESP32, ESP8266, TFT, ST7789, HUB75",
+  "description": "QR code generation for HUB75 panels",
   "repository":
   {
     "type": "git",
-    "url": "https://github.com/yoprogramo/QRcodeOled"
+    "url": "https://github.com/yoprogramo/QRcode_HUB75"
   },
   "authors":
   [
